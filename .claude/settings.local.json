@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l /c/Users/uparp/Desktop/paygent/paygent/*.py /c/Users/uparp/Desktop/paygent/tests/*.py)",
+      "Bash(python -m pytest tests/ -x -v)",
+      "Bash(python -m pytest tests/test_sensitive_data.py tests/test_payment_api_failures.py tests/test_cancellation.py -v)",
+      "Bash(python -c ' *)",
+      "Bash(python -m pytest tests/ -v)",
+      "Bash(find \"c:\\\\Users\\\\uparp\\\\Desktop\\\\paygent\" -name \"__pycache__\" -type d -exec rm -rf {} +)",
+      "Bash(python -m pytest tests/ -q)",
+      "Bash(python eval/stress_test.py)",
+      "Bash(xargs wc *)",
+      "Bash(python -m pytest tests/ --co -q)",
+      "Bash(python eval/run_scenarios.py)",
+      "Bash(find \"c:\\\\Users\\\\uparp\\\\Desktop\\\\paygent\" -name \"*.pyc\" -delete)",
+      "Bash(wc -l /c/Users/uparp/Desktop/paygent/paygent/*.py)",
+      "Bash(python cli.py --mock)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\uparp\\Desktop\\paygent"
+    ]
+  }
+}

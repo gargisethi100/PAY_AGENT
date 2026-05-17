@@ -1,0 +1,66 @@
+# Evaluation scenarios for the Payment Agent
+# Run with: python eval/run_scenarios.py
+# Stress test with: python eval/stress_test.py
+
+scenarios:
+  # Happy paths
+  - name: happy_path_clean
+    category: happy_path
+    description: Clean inputs, full payment flow
+  - name: happy_path_messy
+    category: happy_path
+    description: Messy natural language throughout
+  - name: happy_path_word_aadhaar
+    category: happy_path
+    description: Word-form Aadhaar digits (four three two one)
+  - name: happy_path_slash_dob
+    category: happy_path
+    description: DOB with slash separator (14/05/1990)
+  - name: happy_path_leap_year
+    category: happy_path
+    description: Leap year DOB edge case (Feb 29, 1988)
+  - name: happy_path_long_name
+    category: happy_path
+    description: Long name with alias prefix
+  - name: happy_path_incremental_card
+    category: happy_path
+    description: Card details provided one field at a time
+
+  # Amount handling
+  - name: amount_all_of_it
+    category: amount
+    description: Colloquial "all of it" for full amount
+  - name: amount_reject_then_new
+    category: amount
+    description: Reject confirmation and provide new amount in same message
+
+  # Verification
+  - name: verification_failure
+    category: verification
+    description: 3 failed attempts, closes without showing balance
+  - name: invalid_dob_feedback
+    category: verification
+    description: Invalid date gets specific feedback, not generic re-prompt
+
+  # Edge cases
+  - name: zero_balance
+    category: edge_case
+    description: Zero balance account, no payment collected
+  - name: account_not_found
+    category: edge_case
+    description: Non-existent account ID
+  - name: cancellation
+    category: edge_case
+    description: User cancels mid-flow
+  - name: cancellation_negation
+    category: edge_case
+    description: "don't cancel" does NOT trigger cancellation
+  - name: account_change
+    category: edge_case
+    description: Account switch during name stage
+
+metrics:
+  - success_rate: Percentage of scenarios that pass
+  - no_data_leak: No sensitive data (DOB, Aadhaar, pincode) in any response
+  - correct_tool_timing: APIs called only at correct state transitions
+  - graceful_failures: All failures produce actionable user messages

@@ -1,0 +1,10 @@
+/.pytest_cache
+/.venv
+.env
+.env.*
+!.env.example
+<<<<<<< HEAD
+=======
+/__pycache__
+*.pyc
+>>>>>>> d98c0438fcfe71d2b3bc6dc910356c149d11116d
